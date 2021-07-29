@@ -1,43 +1,112 @@
 {
   "name": "dataflow",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.17",
-    "@types/react": "^17.0.15",
-    "@types/react-dom": "^17.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.3.5",
-    "web-vitals": "^1.1.2"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint \"src/**/*.{js,ts,tsx}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "format:base": "prettier --config .prettierrc \"src/**/*.{js,ts,tsx,css}\"",
+    "format:check": "npm run format:base -- --check",
+    "format": "npm run format:base -- --write"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.14.5",
+    "@testing-library/dom": "^7.29.4",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
+    "@testing-library/user-event": "^10.4.1",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.0.3"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "plugin:jsx-a11y/recommended",
+      "airbnb-typescript",
+      "prettier",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "src"
+          ]
+        }
+      }
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "plugins": [
+      "jsx-a11y"
+    ],
+    "rules": {
+      "no-use-before-define": "off",
+      "comma-dangle": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "import/prefer-default-export": "off",
+      "import/no-named-as-default": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "src/setupTests.ts",
+            "**/__tests__/*.{js,ts,tsx}",
+            "**/__fixtures__/*.{js,ts,tsx}",
+            "**/*.test.{js,ts,tsx}",
+            "**/*.spec.{js,ts,tsx}"
+          ]
+        }
+      ],
+      "react/prop-types": "off",
+      "react/require-default-props": "off",
+      "react/jsx-ident": "off",
+      "arrow-body-style": [
+        "error",
+        "as-needed"
+      ],
+      "react/jsx-props-no-spreading": [
+        "error",
+        {
+          "exceptions": [
+            "DobForm",
+            "Component"
+          ]
+        }
+      ],
+      "no-console": "off"
+    }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
