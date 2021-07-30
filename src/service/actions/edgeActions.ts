@@ -7,6 +7,7 @@ import {
   Target,
   DeleteEdgeAction,
   MoveEdgeAction,
+  EdgeID,
 } from 'types';
 
 const createEdge = <S extends Schema>(
@@ -19,13 +20,13 @@ const createEdge = <S extends Schema>(
   target,
 });
 
-const deleteEdge = (id: string): DeleteEdgeAction => ({
+const deleteEdge = (id: EdgeID): DeleteEdgeAction => ({
   id,
   type: 'edge/delete',
 });
 
 const moveEdge = <S extends Schema>(
-  id: string,
+  id: EdgeID,
   target: Target<S>,
 ): MoveEdgeAction<S> => ({
   id,

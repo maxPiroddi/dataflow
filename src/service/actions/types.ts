@@ -1,4 +1,5 @@
-import { Schema, Source, Target } from '../types';
+// eslint-disable-next-line import/no-cycle
+import { NodeID, EdgeID, Schema, Source, Target } from '../types';
 
 export type EditorAction<S extends Schema> =
   | CreateNodeAction<S>
@@ -9,37 +10,37 @@ export type EditorAction<S extends Schema> =
   | MoveEdgeAction<S>;
 
 export type CreateNodeAction<S extends Schema> = {
-  id: string;
+  id: NodeID;
   type: 'node/create';
   kind: keyof S;
   position: { x: number; y: number };
 };
 
 export type DeleteNodeAction = {
-  id: string;
+  id: NodeID;
   type: 'node/delete';
 };
 
 export type MoveNodeAction = {
-  id: string;
+  id: NodeID;
   type: 'node/move';
   position: { x: number; y: number };
 };
 
 export type CreateEdgeAction<S extends Schema> = {
-  id: string;
+  id: EdgeID;
   type: 'edge/create';
   source: Source<S>;
   target: Target<S>;
 };
 
 export type DeleteEdgeAction = {
-  id: string;
+  id: EdgeID;
   type: 'edge/delete';
 };
 
 export type MoveEdgeAction<S extends Schema> = {
-  id: string;
+  id: EdgeID;
   type: 'edge/move';
   target: Target<S>;
 };

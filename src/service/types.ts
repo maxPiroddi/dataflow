@@ -1,4 +1,5 @@
-import { EditorAction } from 'react-dataflow-editor';
+// eslint-disable-next-line import/no-cycle
+import { EditorAction } from './actions/types';
 
 // Global generic parameter constraint
 export type Schema = Record<string, { inputs: string; outputs: string }>;
@@ -29,6 +30,9 @@ export type Kinds<S extends Schema> = {
   readonly [K in keyof Schema]: Kind<GetInputs<S, K>, GetOutputs<S, K>>;
 };
 
+export type NodeID = string;
+export type EdgeID = string;
+
 // Each node knows what properties its input & output obj have
 type Node<S extends Schema, K extends keyof S = keyof S> = {
   [k in K]: {
@@ -40,12 +44,12 @@ type Node<S extends Schema, K extends keyof S = keyof S> = {
 }[K];
 
 export type Source<S extends Schema, K extends keyof S = keyof S> = {
-  id: string;
+  id: NodeID;
   output: GetOutputs<S, K>;
 };
 
 export type Target<S extends Schema, K extends keyof S = keyof S> = {
-  id: string;
+  id: NodeID;
   input: GetInputs<S, K>;
 };
 
@@ -61,8 +65,8 @@ type Edge<
 };
 
 export interface EditorState<S extends Schema> {
-  nodes: Record<string, Node<S>>;
-  edges: Record<string, Edge<S>>;
+  nodes: Record<NodeID, Node<S>>;
+  edges: Record<EdgeID, Edge<S>>;
   focus: Focus | null;
 }
 

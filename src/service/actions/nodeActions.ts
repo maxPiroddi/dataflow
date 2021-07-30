@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { Schema, CreateNodeAction } from 'types';
+import { Schema, CreateNodeAction, NodeID } from 'types';
 import { DeleteNodeAction, MoveNodeAction } from './types';
 
 const createNode = <S extends Schema>(
@@ -13,13 +13,13 @@ const createNode = <S extends Schema>(
   position,
 });
 
-const deleteNode = (id: string): DeleteNodeAction => ({
+const deleteNode = (id: NodeID): DeleteNodeAction => ({
   id,
   type: 'node/delete',
 });
 
 const moveNode = (
-  id: string,
+  id: NodeID,
   position: { x: number; y: number },
 ): MoveNodeAction => ({
   id,
