@@ -13,7 +13,9 @@
     "format": "npm run format:base -- --write"
   },
   "dependencies": {
+    "nanoid": "^3.1.23",
     "react": "^17.0.1",
+    "react-dataflow-editor": "^0.1.2",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.1.2"
