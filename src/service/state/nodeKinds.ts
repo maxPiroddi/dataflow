@@ -7,7 +7,7 @@ export const nodeKinds = {
   },
   sub: {
     inputs: { a: null, b: null },
-    outputs: { sum: null },
+    outputs: { result: null },
     backgroundColor: 'teal',
     name: 'Subtraction',
   },
