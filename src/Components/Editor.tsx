@@ -5,16 +5,16 @@ import {
 } from 'react-dataflow-editor';
 
 import { GetSchema } from 'types';
-import { flowKinds, initialState, reducer } from 'service/state';
+import { nodeKinds, initialState, reducer } from 'service/state';
 
-type S = GetSchema<typeof flowKinds>;
+type S = GetSchema<typeof nodeKinds>;
 
 const Editor: FunctionComponent = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <DataflowEditor
-      kinds={flowKinds}
+      kinds={nodeKinds}
       state={state as DataflowEditorState<S>}
       dispatch={dispatch}
     />

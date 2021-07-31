@@ -1,4 +1,4 @@
-export const flowKinds = {
+export const nodeKinds = {
   add: {
     inputs: { a: null, b: null },
     outputs: { sum: null },

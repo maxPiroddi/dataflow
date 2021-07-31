@@ -1,5 +1,5 @@
-import { flowKinds } from './flowKinds';
+import { nodeKinds } from './nodeKinds';
 import { initialState } from './initialState';
 import { reducer } from './reducer';
 
-export { flowKinds, initialState, reducer };
+export { nodeKinds, initialState, reducer };

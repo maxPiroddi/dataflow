@@ -1,8 +1,8 @@
 import { EditorState, GetSchema } from 'types';
 
-import { flowKinds } from './flowKinds';
+import { nodeKinds } from './nodeKinds';
 
-type S = GetSchema<typeof flowKinds>;
+type S = GetSchema<typeof nodeKinds>;
 
 export const initialState: EditorState<S> = {
   nodes: {},
