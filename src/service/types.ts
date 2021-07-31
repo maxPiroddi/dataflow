@@ -5,8 +5,14 @@ import { EditorAction } from './actions/types';
 export type Schema = Record<string, { inputs: string; outputs: string }>;
 
 // Accessor utility types
-type GetInputs<S extends Schema, K extends keyof S> = S[K]['inputs'];
-type GetOutputs<S extends Schema, K extends keyof S> = S[K]['outputs'];
+export type GetInputs<
+  S extends Schema,
+  K extends keyof S = keyof S,
+> = S[K]['inputs'];
+export type GetOutputs<
+  S extends Schema,
+  K extends keyof S = keyof S,
+> = S[K]['outputs'];
 
 // Turn a concrete Kinds<S> back into Schema
 // We will use for storage of the editor state
@@ -27,17 +33,19 @@ type Kind<I extends string, O extends string> = Readonly<{
 
 // Configuration property, that will drive inference of S
 export type Kinds<S extends Schema> = {
-  readonly [K in keyof Schema]: Kind<GetInputs<S, K>, GetOutputs<S, K>>;
+  readonly [K in keyof S]: Kind<GetInputs<S, K>, GetOutputs<S, K>>;
 };
 
 export type NodeID = string;
 export type EdgeID = string;
+export type Position = { x: number; y: number };
 
 // Each node knows what properties its input & output obj have
-type Node<S extends Schema, K extends keyof S = keyof S> = {
+export type Node<S extends Schema, K extends keyof S = keyof S> = {
   [k in K]: {
+    id: string;
     kind: k;
-    position: { x: number; y: number };
+    position: Position;
     inputs: Record<GetInputs<S, k>, string | null>;
     outputs: Record<GetOutputs<S, k>, string[]>;
   };

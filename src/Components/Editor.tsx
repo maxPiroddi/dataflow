@@ -1,14 +1,35 @@
-import React, { FunctionComponent } from 'react';
-import { Editor as DataflowEditor } from 'react-dataflow-editor';
+import React, { FunctionComponent, useReducer } from 'react';
+import {
+  Editor as DataflowEditor,
+  EditorState as DataflowEditorState,
+} from 'react-dataflow-editor';
+import { EditorAction } from 'service/actions/types';
+import { flowKinds } from 'service/state/flowKinds';
+import { EditorState, GetSchema } from 'types';
 
-import { EditorProps } from 'types';
+type S = GetSchema<typeof flowKinds>;
 
-import { KindsSchema, withState } from './HOC/withState';
+const initialState: EditorState<S> = {
+  nodes: {},
+  edges: {},
+  focus: null,
+};
 
-const Editor: FunctionComponent<EditorProps<KindsSchema>> = ({
-  kinds,
-  state,
-  dispatch,
-}) => <DataflowEditor kinds={kinds} state={state} dispatch={dispatch} />;
+const reducer = (state: EditorState<S>, action: EditorAction<S>) => {
+  console.log(action);
+  return { ...state };
+};
 
-export default withState(Editor);
+const Editor: FunctionComponent = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <DataflowEditor
+      kinds={flowKinds}
+      state={state as DataflowEditorState<S>}
+      dispatch={dispatch as (action: EditorAction<S>) => void}
+    />
+  );
+};
+
+export default Editor;
