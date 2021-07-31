@@ -4,21 +4,18 @@ import {
   EditorState as DataflowEditorState,
 } from 'react-dataflow-editor';
 
-import { nodeKinds } from 'service/state';
-import { EditorProps, GetSchema } from 'types';
+import { EditorProps, KindSchema } from 'types';
 
 import { withState } from './withState';
 
-type S = GetSchema<typeof nodeKinds>;
-
-const Editor: FunctionComponent<EditorProps<S>> = ({
+const Editor: FunctionComponent<EditorProps<KindSchema>> = ({
   kinds,
   state,
   dispatch,
 }) => (
   <DataflowEditor
     kinds={kinds}
-    state={state as DataflowEditorState<S>}
+    state={state as DataflowEditorState<KindSchema>}
     dispatch={dispatch}
   />
 );
