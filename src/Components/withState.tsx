@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useReducer } from 'react';
+import React, { FunctionComponent, useEffect, useReducer } from 'react';
 
-import { nodeKinds } from 'service/state';
 import {
   EditorAction,
   EditorProps,
@@ -10,6 +9,7 @@ import {
   GetSchema,
   Kinds,
 } from 'types';
+import { nodeKinds } from 'service/state';
 
 type S = GetSchema<typeof nodeKinds>;
 
@@ -58,8 +58,11 @@ export const reducer = (
 export const withState =
   (Component: FunctionComponent<EditorProps<S>>): FunctionComponent =>
   () => {
-    console.log('Higher powers exist');
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+      console.log('App state: ', state);
+    }, [state]);
 
     return <Component kinds={nodeKinds} state={state} dispatch={dispatch} />;
   };
