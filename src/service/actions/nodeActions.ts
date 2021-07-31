@@ -1,7 +1,13 @@
 import { nanoid } from 'nanoid';
 
-import { Schema, CreateNodeAction, NodeID, Position } from 'types';
-import { DeleteNodeAction, MoveNodeAction } from './types';
+import {
+  Schema,
+  CreateNodeAction,
+  NodeID,
+  Position,
+  DeleteNodeAction,
+  MoveNodeAction,
+} from 'types';
 
 const createNode = <S extends Schema>(
   kind: keyof S,

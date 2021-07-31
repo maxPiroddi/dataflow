@@ -1,13 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import {
-  NodeID,
-  EdgeID,
-  Schema,
-  Source,
-  Target,
-  Position,
-  Focus,
-} from '../types';
+import { NodeID, EdgeID, Schema, Source, Target, Position, Focus } from 'types';
 
 export type EditorAction<S extends Schema> =
   | CreateNodeAction<S>
