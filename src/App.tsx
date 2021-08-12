@@ -1,12 +1,19 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import { Editor } from './scenes/Editor/Components';
+import { Home } from 'scenes/Home/Home';
+import { Editor } from 'scenes/Editor/Components';
 
 const App = () => (
-  <div>
+  <BrowserRouter>
     <h1>Dataflow Editor</h1>
-    <Editor />
-  </div>
+    <Route exact path="/editor">
+      <Editor />
+    </Route>
+    <Route exact path="/">
+      <Home />
+    </Route>
+  </BrowserRouter>
 );
 
 export default App;

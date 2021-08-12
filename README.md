@@ -74,23 +74,23 @@ The main principles are:
 - A scene can define nested components, scenes or services.
 - A service can define nested services. It cannot use or define components or
   scenes.
-- Code is allowed to include code nested inside it, or from the very top
+- Code is allowed to include modules & code nested inside it, or from the very top
   level of the application. It may not include code that is a cousin or a
   grandparent.
   ​
   That last rule is the most important one, as it can sometimes be violated in
-  the course of development. This means you need to move the code to the appropriate place.
+  the course of development. This means we need to move the code to the appropriate place.
   ​
   This style means it is very easy to reason about what code is used where, and
   what the boundaries of each component are. It should also increase
   findability within the code.
   ​
-  The practical result means that your imports should either start with `./`
+  The practical result means that our imports should either start with `./`
   or be a very top level import with at most one slash (eg `services/foo`).
   ​
-  This rule is not currently enforced with linting, so you will need to
-  manually eyeball dependencies. Be careful with auto-importing - you may need
-  to adjust your editor's settings to avoid fully qualified imports.
+  This rule is not currently enforced with linting, so we will need to
+  manually eyeball dependencies. Be careful with auto-importing - we may need
+  to adjust our editor's settings to avoid fully qualified imports.
 
 ### Types
 
