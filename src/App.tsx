@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Editor } from './Components';
+import { Editor } from './scenes/Editor/Components';
 
 const App = () => (
   <div>

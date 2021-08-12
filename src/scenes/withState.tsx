@@ -5,7 +5,7 @@ import {
 } from 'react-dataflow-editor';
 
 import { EditorAction, EditorProps, EditorState, KindSchema } from 'types';
-import { nodeKinds } from 'service/state';
+import { nodeKinds } from 'scenes/Editor/service/state';
 
 export const initialState: EditorState<KindSchema> = {
   nodes: {},

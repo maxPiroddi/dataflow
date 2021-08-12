@@ -6,7 +6,7 @@ import {
 
 import { EditorProps, KindSchema } from 'types';
 
-import { withState } from './withState';
+import { withState } from '../../withState';
 
 const Editor: FunctionComponent<EditorProps<KindSchema>> = ({
   kinds,
