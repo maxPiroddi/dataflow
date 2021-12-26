@@ -1,4 +1,9 @@
-import React, { useCallback, FunctionComponent, useState } from 'react';
+import React, {
+  useCallback,
+  FunctionComponent,
+  useState,
+  useEffect,
+} from 'react';
 import {
   reduce,
   EditorState as DataflowEditorState,
@@ -17,6 +22,10 @@ export const withState =
   (Component: FunctionComponent<EditorProps<KindSchema>>): FunctionComponent =>
   () => {
     const [state, setState] = useState<EditorState<KindSchema>>(initialState);
+
+    useEffect(() => {
+      console.log('State: ', state);
+    }, [state]);
 
     const dispatch = useCallback(
       (action: EditorAction<KindSchema>) => {

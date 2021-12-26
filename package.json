@@ -1,5 +1,5 @@
 {
-  "name": "dataflow",
+  "name": "dataflow-client",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -64,9 +64,6 @@
           ]
         }
       }
-    },
-    "parserOptions": {
-      "project": "./tsconfig.json"
     },
     "plugins": [
       "jsx-a11y"

@@ -11,16 +11,4 @@ export const nodeKinds = {
     backgroundColor: 'teal',
     name: 'Subtraction',
   },
-  div: {
-    inputs: { dividend: null, divisor: null },
-    outputs: { quotient: null, remainder: null },
-    backgroundColor: 'darksalmon',
-    name: 'Division',
-  },
-  mult: {
-    inputs: { multiplier: null, multiplicand: null },
-    outputs: { product: null },
-    backgroundColor: 'red',
-    name: 'Multiplication',
-  },
 };
